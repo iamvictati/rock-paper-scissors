@@ -2,57 +2,47 @@
 //use Math.random() * varible.length to extract from different options 
 const choices = ["rock", "paper", "scissors"]; 
 
-
 let humanChoice = window.prompt("Choose rock, paper or scissors!");
 
 function getHumanChoice() {
-    if (humanChoice == "rock" ||
-        humanChoice == "paper" ||
-        humanChoice == "scissors") 
-        {
-        console.log(humanChoice);
-    } else {
-        alert("You must choose rock, paper, or scissors!!");
+    if (humanChoice.toLowerCase() == "rock" ||
+        humanChoice.toLowerCase() == "paper" ||
+        humanChoice.toLowerCase() == "scissors") 
+    {
+        return humanChoice; 
+
+    } else { 
+        alert("You must choose rock, paper or scissors! Reload the page...");
     }
 }
-
-getHumanChoice(); 
 
 let computerChoice = getComputerChoice(); 
 
 function getComputerChoice() { 
     const randomChoice = Math.floor(Math.random() * choices.length); 
     const computerChoice = choices[randomChoice]; 
-    return console.log(computerChoice); 
+    return computerChoice; 
 }
 
-
-// round = 0; 
-
-// function playGame() {
-//     const humanScore = 0; 
-//     const computerScore = 0;  
- 
-//     function playRound(humanChoice, computerChoice) {
-//         humanChoice = getHumanChoice(); 
-//         computerChoice = getComputerChoice(); 
+let humanScore = 0; 
+let computerScore = 0;  
         
-//         if (humanChoice === computerChoice) {
-//             console.log("It's a tie!!");
+function playRound(humanChoice, computerChoice) {
     
-//         } else if (
-//             (humanChoice === "rock" && computerChoice === "scissors") || 
-//             (humanChoice === "paper" && computerChoice === "rock") || 
-//             (humanChoice === "scissors" && computerChoice === "paper")
-//         ) {
-//             console.log("You win!!");
-    
-//         } else {
-//             computerScore += 1; 
-//             console.log("Computer wins!!");
-//         }
-//     }
-//     let round = playRound(5);
-// }
- 
+    if (humanChoice == computerChoice) {
+        console.log("It's a tie my friend!!");
+    } else if (humanChoice == "rock" && computerChoice == "paper" ||
+            humanChoice == "scissors" && computerChoice == "rock" ||
+            humanChoice == "paper" && computerChoice == "scissors") {
+            console.log("Looooooser!!!"); 
+            computerScore++; 
+    } else {
+            console.log("You win!!! Yay!:))"); 
+            humanScore++; 
+    }
+}
 
+console.log(humanChoice);
+console.log(computerChoice);
+playRound(humanChoice, computerChoice); 
+   
