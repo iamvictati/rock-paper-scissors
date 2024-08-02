@@ -5,11 +5,11 @@ const choices = ["rock", "paper", "scissors"];
 let humanChoice = window.prompt("Choose rock, paper or scissors!");
 
 function getHumanChoice() {
-    if (humanChoice.toLowerCase() === "rock" ||
-        humanChoice.toLowerCase() === "paper" ||
-        humanChoice.toLowerCase() === "scissors") 
+    if (humanChoice.toLowerCase() == "rock" ||
+        humanChoice.toLowerCase() == "paper" ||
+        humanChoice.toLowerCase() == "scissors") 
     {
-        return humanChoice; 
+        return humanChoice = humanChoice.toLowerCase(); 
 
     } else { 
         alert("You must choose rock, paper or scissors! Reload the page...");
