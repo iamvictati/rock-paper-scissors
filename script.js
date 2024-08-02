@@ -19,6 +19,8 @@ function getHumanChoice() {
 
 getHumanChoice(); 
 
+console.log(humanChoice);
+
 let computerChoice = getComputerChoice(); 
 
 function getComputerChoice() { 
@@ -29,29 +31,43 @@ function getComputerChoice() {
 
 getComputerChoice(); 
 
-let humanScore = 0; 
-let computerScore = 0;  
-        
-function playRound(humanChoice, computerChoice) {
-    
-    if (humanChoice == computerChoice) {
-        console.log("It's a tie my friend!!");
-    } else if (humanChoice == "rock" && computerChoice == "paper" ||
-            humanChoice == "scissors" && computerChoice == "rock" ||
-            humanChoice == "paper" && computerChoice == "scissors") {
-            console.log("Looooooser!!!"); 
-            computerScore++; 
-    } else if (humanChoice == "paper" && computerChoice == "rock" ||
-        humanChoice == "rock" && computerChoice == "scissors" ||
-        humanChoice == "scissors" && computerChoice == "paper") {
-            console.log("You win!!! Yay!:))"); 
-            humanScore++; 
-    } else {
-        console.log("You didn't choose a valid tool... ");
-    }
+console.log(computerChoice);
+
+let humanScore;
+let computerScore;
+
+for (let round = 0; round < 5; round++) {
+    playGame(); 
 }
 
-console.log(humanChoice);
-console.log(computerChoice);
-playRound(humanChoice, computerChoice); 
-   
+function playGame() {
+    
+    round = 0; 
+    humanScore = 0;
+    computerScore = 0; 
+
+    function playRound(humanChoice, computerChoice) { 
+
+        if (humanChoice == computerChoice) {
+            console.log("It's a tie my friend!!");
+            round++; 
+        } else if (humanChoice == "rock" && computerChoice == "paper" ||
+                humanChoice == "scissors" && computerChoice == "rock" ||
+                humanChoice == "paper" && computerChoice == "scissors") {
+                console.log("Looooooser!!!"); 
+                computerScore++; 
+                round++;
+        } else if (humanChoice == "paper" && computerChoice == "rock" ||
+                humanChoice == "rock" && computerChoice == "scissors" ||
+                humanChoice == "scissors" && computerChoice == "paper") {
+                console.log("You win!!! Yay!:))"); 
+                humanScore++; 
+                round++; 
+        } else {
+            console.log("You didn't choose a valid tool... ");
+        }
+    }
+    playRound(humanChoice, computerChoice); 
+}
+
+
