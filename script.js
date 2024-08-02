@@ -5,16 +5,19 @@ const choices = ["rock", "paper", "scissors"];
 let humanChoice = window.prompt("Choose rock, paper or scissors!");
 
 function getHumanChoice() {
-    if (humanChoice.toLowerCase() == "rock" ||
-        humanChoice.toLowerCase() == "paper" ||
-        humanChoice.toLowerCase() == "scissors") 
+    if (humanChoice.toLowerCase() === "rock" ||
+        humanChoice.toLowerCase() === "paper" ||
+        humanChoice.toLowerCase() === "scissors") 
     {
         return humanChoice; 
 
     } else { 
         alert("You must choose rock, paper or scissors! Reload the page...");
+        humanChoice = null; 
     }
 }
+
+getHumanChoice(); 
 
 let computerChoice = getComputerChoice(); 
 
@@ -23,6 +26,8 @@ function getComputerChoice() {
     const computerChoice = choices[randomChoice]; 
     return computerChoice; 
 }
+
+getComputerChoice(); 
 
 let humanScore = 0; 
 let computerScore = 0;  
@@ -36,9 +41,13 @@ function playRound(humanChoice, computerChoice) {
             humanChoice == "paper" && computerChoice == "scissors") {
             console.log("Looooooser!!!"); 
             computerScore++; 
-    } else {
+    } else if (humanChoice == "paper" && computerChoice == "rock" ||
+        humanChoice == "rock" && computerChoice == "scissors" ||
+        humanChoice == "scissors" && computerChoice == "paper") {
             console.log("You win!!! Yay!:))"); 
             humanScore++; 
+    } else {
+        console.log("You didn't choose a valid tool... ");
     }
 }
 
