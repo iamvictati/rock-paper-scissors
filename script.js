@@ -12,6 +12,7 @@ function getComputerChoice() {
     let computerChoice = choices[randomChoice]; 
     return computerChoice;    
 }
+computerChoice = getComputerChoice(); 
 
 let humanChoice; 
 function getHumanChoice() {
@@ -23,10 +24,9 @@ function getHumanChoice() {
             return humanChoice; 
     } else {
         alert("You are not choosing 'rock', 'paper' or 'scissors'. Reload the page my friend..."); 
-        return null; 
+        return humanChoice = null;  
     }
 }
-getComputerChoice(); 
 
 function playGame() {
     let humanScore = 0; 
@@ -53,6 +53,8 @@ function playGame() {
         } else if (humanChoice == "rock" && computerChoice == "paper") {
             console.log("Paper beats Rock");
             return computerScore++;
+        } else if (humanChoice !== "rock" || humanChoice !== "paper" || humanChoice !== "scissors") {
+            console.log("You didn't choose rock, paper, or scissors");
         }
     }
 
