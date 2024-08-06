@@ -1,3 +1,6 @@
+alert("Press [ALT + Shift + I] to open the Console.");
+alert("Reload the page with the console open."); 
+
 const choices = ["rock", "paper", "scissors"]; 
 
 let computerChoice; 
