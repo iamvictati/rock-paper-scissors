@@ -95,6 +95,3 @@ function playGame() {
     } 
 }
 playGame(); 
-
-
-
