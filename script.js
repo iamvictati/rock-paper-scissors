@@ -26,7 +26,7 @@ function getHumanChoice() {
         return null; 
     }
 }
-humanChoice = getComputerChoice(); 
+getComputerChoice(); 
 
 function playGame() {
     let humanScore = 0; 
