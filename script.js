@@ -84,15 +84,15 @@ function playGame() {
 
     if (humanScore > computerScore) {
         console.log("Human:", humanScore);
-        console.log("Computer", computerScore); 
+        console.log("Computer:", computerScore); 
         console.log(`YOU WIN ${humanScore} TO ${computerScore}!!!!`);
     } else if (computerScore > humanScore) {
         console.log("Human:", humanScore);
-        console.log("Computer", computerScore); 
+        console.log("Computer:", computerScore); 
         console.log(`COMPUTER WINS ${computerScore} TO ${humanScore}....`);
     } else {
         console.log("Human:", humanScore);
-        console.log("Computer", computerScore); 
+        console.log("Computer:", computerScore); 
         console.log("FUNKY TIE!! WANNA REMATCH??"); 
     }
 }
