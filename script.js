@@ -12,7 +12,6 @@ function getComputerChoice() {
     let computerChoice = choices[randomChoice]; 
     return computerChoice;    
 }
-computerChoice = getComputerChoice(); 
 
 let humanChoice; 
 function getHumanChoice() {
@@ -75,7 +74,7 @@ function playGame() {
 
         getHumanChoice(); 
         console.log("H:", humanChoice); 
-        getComputerChoice(); 
+        computerChoice = getComputerChoice(); 
         console.log("C:", computerChoice); 
         playRound(humanChoice, computerChoice); 
     } 
