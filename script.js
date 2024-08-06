@@ -80,6 +80,8 @@ function playGame() {
         playRound(humanChoice, computerChoice); 
     } 
 
+    console.log ("💫~~~~~~~SCORES~~~~~~~💫");
+
     if (humanScore > computerScore) {
         console.log("Human:", humanScore);
         console.log("Computer", computerScore); 
@@ -91,7 +93,7 @@ function playGame() {
     } else {
         console.log("Human:", humanScore);
         console.log("Computer", computerScore); 
-        console.log("REMATCH??"); 
-    } 
+        console.log("FUNKY TIE!! WANNA REMATCH??"); 
+    }
 }
 playGame(); 
