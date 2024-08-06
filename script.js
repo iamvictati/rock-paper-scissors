@@ -1,7 +1,7 @@
 //MAKE SURE TO ALWAYS STATE let WHEN USING A LOOP 
 //CALL FUNCTIONS WITHIN LOOP INSTEAD OF FUNCTION ASSIGNED VARIABLES. OTHERWISE ONLY VALUE WILL BE RETURNED.
 
-alert("Press [ALT + Shift + I] to open the Console.");
+alert("Press [Ctrl + SHIFT + I] to open the Console.");
 alert("Reload the page with the console open. Or press enter to proceed."); 
 
 const choices = ["rock", "paper", "scissors"]; 
