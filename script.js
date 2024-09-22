@@ -12,7 +12,6 @@ function getComputerChoice() {
     let computerChoice = choices[randomChoice]; 
     return computerChoice;    
 }
-computerChoice = getComputerChoice(); 
 
 let humanChoice; 
 function getHumanChoice() {
@@ -54,10 +53,13 @@ function playGame() {
         } else if (humanChoice == "rock" && computerChoice == "paper") {
             console.log("Paper beats Rock");
             return computerScore++;
-        }
+        } 
     }
 
     for (let i = 1; i<= 5; i++) {
+
+        humanChoice = getHumanChoice(); 
+        computerChoice = getComputerChoice(); 
 
         if (i == 1) {
             console.log("~~~ROUND 1~~~");
@@ -73,9 +75,7 @@ function playGame() {
             break;
         }
 
-        getHumanChoice(); 
         console.log("H:", humanChoice); 
-        computerChoice = getComputerChoice(); 
         console.log("C:", computerChoice); 
         playRound(humanChoice, computerChoice); 
     } 
