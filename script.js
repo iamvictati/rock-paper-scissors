@@ -33,6 +33,30 @@ function playGame() {
     let humanScore = 0; 
     let computerScore = 0; 
 
+    for (let i = 1; i<= 5; i++) {
+
+        if (i == 1) {
+            console.log("~~~ROUND 1~~~");
+        } else if (i == 2) {
+            console.log("~~~ROUND 2~~~"); 
+        } else if (i == 3) {
+            console.log("~~~ROUND 3~~~"); 
+        } else if (i == 4) {
+            console.log("~~~ROUND 4~~~"); 
+        } else if (i == 5) {
+            console.log("~~~ROUND 5~~~"); 
+        } else {
+            break;
+        }
+
+        getHumanChoice(); 
+        console.log("H:", humanChoice); 
+        computerChoice = getComputerChoice(); 
+        console.log("C:", computerChoice); 
+        playRound(humanChoice, computerChoice); 
+    } 
+
+    //H: rock C:scissors has bug, it skips and doesn't log anything
     function playRound(humanChoice, computerChoice) {
         if (humanChoice == computerChoice) {
             console.log("It's a tie");
@@ -56,29 +80,6 @@ function playGame() {
             return computerScore++;
         }
     }
-
-    for (let i = 1; i<= 5; i++) {
-
-        if (i == 1) {
-            console.log("~~~ROUND 1~~~");
-        } else if (i == 2) {
-            console.log("~~~ROUND 2~~~"); 
-        } else if (i == 3) {
-            console.log("~~~ROUND 3~~~"); 
-        } else if (i == 4) {
-            console.log("~~~ROUND 4~~~"); 
-        } else if (i == 5) {
-            console.log("~~~ROUND 5~~~"); 
-        } else {
-            break;
-        }
-
-        getHumanChoice(); 
-        console.log("H:", humanChoice); 
-        computerChoice = getComputerChoice(); 
-        console.log("C:", computerChoice); 
-        playRound(humanChoice, computerChoice); 
-    } 
 
     console.log ("💫~~~~~~~SCORES~~~~~~~💫");
 
