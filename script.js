@@ -6,30 +6,31 @@ alert("Reload the page with the console open. Or press enter to proceed.");
 
 const choices = ["rock", "paper", "scissors"]; 
 
-let computerChoice; 
-function getComputerChoice() {
-    const randomChoice = Math.floor(Math.random() * choices.length); 
-    let computerChoice = choices[randomChoice]; 
-    return computerChoice;    
-}
-computerChoice = getComputerChoice(); 
-
-let humanChoice; 
-function getHumanChoice() {
-    humanChoice = window.prompt('Choose "rock", "paper" or "scissors" my friend. ^.^');
-    humanChoice = humanChoice.toLowerCase(); 
-    if (humanChoice.toLowerCase() == "rock" || 
-        humanChoice.toLowerCase() == "paper" ||
-        humanChoice.toLowerCase() == "scissors") {
-            return humanChoice; 
-    } else {
-        alert("You are not choosing 'rock', 'paper' or 'scissors'. Reload the page my friend..."); 
-        console.log("You didn't choose rock, paper, or scissors");
-        return humanChoice = null;  
-    }
-}
-
 function playGame() {
+
+    let computerChoice; 
+    function getComputerChoice() {
+        const randomChoice = Math.floor(Math.random() * choices.length); 
+        let computerChoice = choices[randomChoice]; 
+        return computerChoice;    
+    }
+    computerChoice = getComputerChoice(); 
+
+    let humanChoice; 
+    function getHumanChoice() {
+        humanChoice = window.prompt('Choose "rock", "paper" or "scissors" my friend. ^.^');
+        humanChoice = humanChoice.toLowerCase(); 
+        if (humanChoice.toLowerCase() == "rock" || 
+            humanChoice.toLowerCase() == "paper" ||
+            humanChoice.toLowerCase() == "scissors") {
+                return humanChoice; 
+        } else {
+            alert("You are not choosing 'rock', 'paper' or 'scissors'. Reload the page my friend..."); 
+            console.log("You didn't choose rock, paper, or scissors");
+            return humanChoice = null;  
+        }
+    }
+
     let humanScore = 0; 
     let computerScore = 0; 
 
@@ -54,7 +55,7 @@ function playGame() {
         computerChoice = getComputerChoice(); 
         console.log("C:", computerChoice); 
         playRound(humanChoice, computerChoice); 
-    } 
+    }
 
     //H: rock C:scissors has bug, it skips and doesn't log anything
     function playRound(humanChoice, computerChoice) {
