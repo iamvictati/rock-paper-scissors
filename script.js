@@ -1,8 +1,8 @@
 //MAKE SURE TO ALWAYS STATE let WHEN USING A LOOP 
 //CALL FUNCTIONS WITHIN LOOP INSTEAD OF FUNCTION ASSIGNED VARIABLES. OTHERWISE ONLY VALUE WILL BE RETURNED.
 
-alert("Press [Ctrl + SHIFT + I] to open the Console.");
-alert("Reload the page with the console open. Or press enter to proceed."); 
+/* alert("Press [Ctrl + SHIFT + I] to open the Console.");
+alert("Reload the page with the console open. Or press enter to proceed.");  */
 
 const choices = ["rock", "paper", "scissors"]; 
 
@@ -18,7 +18,6 @@ function playGame() {
 
     let humanChoice; 
     function getHumanChoice() {
-        humanChoice = window.prompt('Choose "rock", "paper" or "scissors" my friend. ^.^');
         humanChoice = humanChoice.toLowerCase(); 
         if (humanChoice.toLowerCase() == "rock" || 
             humanChoice.toLowerCase() == "paper" ||
@@ -33,29 +32,6 @@ function playGame() {
 
     let humanScore = 0; 
     let computerScore = 0; 
-
-    for (let i = 1; i<= 5; i++) {
-
-        if (i == 1) {
-            console.log("~~~ROUND 1~~~");
-        } else if (i == 2) {
-            console.log("~~~ROUND 2~~~"); 
-        } else if (i == 3) {
-            console.log("~~~ROUND 3~~~"); 
-        } else if (i == 4) {
-            console.log("~~~ROUND 4~~~"); 
-        } else if (i == 5) {
-            console.log("~~~ROUND 5~~~"); 
-        } else {
-            break;
-        }
-
-        getHumanChoice(); 
-        console.log("H:", humanChoice); 
-        computerChoice = getComputerChoice(); 
-        console.log("C:", computerChoice); 
-        playRound(humanChoice, computerChoice); 
-    }
 
     //H: rock C:scissors has bug, it skips and doesn't log anything
     function playRound(humanChoice, computerChoice) {
@@ -81,6 +57,11 @@ function playGame() {
             return computerScore++;
         }
     }
+
+    const humanChoiceBtn = document.querySelector("button");
+    humanChoiceBtn.addEventListener('click', playRound);
+    console.log("H:", humanChoice); 
+    console.log("C:", computerChoice);
 
     console.log ("💫~~~~~~~SCORES~~~~~~~💫");
 
