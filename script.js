@@ -5,29 +5,14 @@
 alert("Reload the page with the console open. Or press enter to proceed.");  */
 
 const choices = ["rock", "paper", "scissors"]; 
+const humanChoiceBtn = document.querySelector("button");
 
 function playGame() {
 
-    let computerChoice; 
     function getComputerChoice() {
         const randomChoice = Math.floor(Math.random() * choices.length); 
         let computerChoice = choices[randomChoice]; 
         return computerChoice;    
-    }
-    computerChoice = getComputerChoice(); 
-
-    let humanChoice; 
-    function getHumanChoice() {
-        humanChoice = humanChoice.toLowerCase(); 
-        if (humanChoice.toLowerCase() == "rock" || 
-            humanChoice.toLowerCase() == "paper" ||
-            humanChoice.toLowerCase() == "scissors") {
-                return humanChoice; 
-        } else {
-            alert("You are not choosing 'rock', 'paper' or 'scissors'. Reload the page my friend..."); 
-            console.log("You didn't choose rock, paper, or scissors");
-            return humanChoice = null;  
-        }
     }
 
     let humanScore = 0; 
@@ -35,6 +20,25 @@ function playGame() {
 
     //H: rock C:scissors has bug, it skips and doesn't log anything
     function playRound(humanChoice, computerChoice) {
+
+        function getHumanChoice() {
+            let humanChoice = humanChoiceBtn.textContent;
+            humanChoice.toLowerCase(); 
+
+            if (humanChoice == "rock" || 
+                humanChoice == "paper" ||
+                humanChoice== "scissors") {
+                    return humanChoice;  
+            } else {
+                console.log("You didn't choose rock, paper, or scissors");
+                return humanChoice = null;  
+            }
+        }
+        getHumanChoice(); 
+        console.log("H:", humanChoice); 
+        getComputerChoice(); 
+        console.log("C:", computerChoice); 
+
         if (humanChoice == computerChoice) {
             console.log("It's a tie");
         } else if (humanChoice == "rock" && computerChoice == "scisssors") {
@@ -57,11 +61,7 @@ function playGame() {
             return computerScore++;
         }
     }
-
-    const humanChoiceBtn = document.querySelector("button");
-    humanChoiceBtn.addEventListener('click', playRound);
-    console.log("H:", humanChoice); 
-    console.log("C:", computerChoice);
+    humanChoiceBtn.addEventListener('click', playRound); 
 
     console.log ("💫~~~~~~~SCORES~~~~~~~💫");
 
@@ -79,4 +79,4 @@ function playGame() {
         console.log("FUNKY TIE!! WANNA REMATCH??"); 
     }
 }
-playGame(); 
+playGame();
