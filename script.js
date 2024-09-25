@@ -5,39 +5,37 @@
 alert("Reload the page with the console open. Or press enter to proceed.");  */
 
 const choices = ["rock", "paper", "scissors"]; 
-const humanChoiceBtn = document.querySelector("button");
+const humanChoiceBtns = document.querySelector("button");
 
 function playGame() {
 
+    let humanChoice;
+    function getHumanChoice() {
+        let humanChoice = humanChoiceBtns.textContent;
+        humanChoice.toLowerCase();
+
+        if (humanChoice == "rock" || 
+            humanChoice == "paper" ||
+            humanChoice== "scissors") {
+                return humanChoice;  
+        } else {
+            console.log("You didn't choose rock, paper, or scissors");
+            return humanChoice = null;  
+        }
+    }
+
+    let computerChoice; 
     function getComputerChoice() {
         const randomChoice = Math.floor(Math.random() * choices.length); 
         let computerChoice = choices[randomChoice]; 
         return computerChoice;    
     }
 
-    let humanScore = 0; 
-    let computerScore = 0; 
-
     //H: rock C:scissors has bug, it skips and doesn't log anything
     function playRound(humanChoice, computerChoice) {
-
-        function getHumanChoice() {
-            let humanChoice = humanChoiceBtn.textContent;
-            humanChoice.toLowerCase(); 
-
-            if (humanChoice == "rock" || 
-                humanChoice == "paper" ||
-                humanChoice== "scissors") {
-                    return humanChoice;  
-            } else {
-                console.log("You didn't choose rock, paper, or scissors");
-                return humanChoice = null;  
-            }
-        }
-        getHumanChoice(); 
-        console.log("H:", humanChoice); 
+        
+        humanChoiceBtns.addEventListener('click', getHumanChoice);
         getComputerChoice(); 
-        console.log("C:", computerChoice); 
 
         if (humanChoice == computerChoice) {
             console.log("It's a tie");
@@ -61,9 +59,14 @@ function playGame() {
             return computerScore++;
         }
     }
-    humanChoiceBtn.addEventListener('click', playRound); 
+    humanChoiceBtns.addEventListener('click', playRound);
+    console.log("H:", humanChoice); 
+    console.log("C:", computerChoice);  
 
     console.log ("💫~~~~~~~SCORES~~~~~~~💫");
+
+    let humanScore = 0; 
+    let computerScore = 0; 
 
     if (humanScore > computerScore) {
         console.log("Human:", humanScore);
