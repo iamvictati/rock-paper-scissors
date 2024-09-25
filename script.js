@@ -6,73 +6,94 @@ alert("Reload the page with the console open. Or press enter to proceed.");  */
 
 let humanScore = 0; 
 let computerScore = 0; 
+/* let roundCounter = 0;  */
+let humanChoice = ""; 
 
 const choices = ["rock", "paper", "scissors"]; 
-const humanChoiceBtns = document.querySelector("button");
+const rockBtn = document.querySelector("#rockBtn");
+const paperBtn = document.querySelector("#paperBtn"); 
+const scissorsBtn = document.querySelector("#scissorsBtn"); 
+
+rockBtn.addEventListener("click", (evt) => {
+    humanChoice = "rock"; 
+    console.log("H:", humanChoice); 
+    playGame(); 
+}); 
+
+paperBtn.addEventListener("click", (evt) => {
+    humanChoice = "paper"; 
+    console.log("H:", humanChoice); 
+    playGame(); 
+});
+
+scissorsBtn.addEventListener("click", (evt) => {
+    humanChoice = "scissors"; 
+    console.log("H:", humanChoice); 
+    playGame(); 
+});
 
 function playGame() {
 
-    console.log ("💫~~~~~~~SCORES~~~~~~~💫");
+    if (humanScore >= 5 || computerScore >= 5) {
+        return;
+    }
 
-    if (humanScore > computerScore) {
+    playRound(); 
+
+    if (humanScore == 5) {
+        console.log("👾WHO DA WINNER???👾");
         console.log("Human:", humanScore);
         console.log("Computer:", computerScore); 
-        console.log(`YOU WIN ${humanScore} TO ${computerScore}!!!!`);
-    } else if (computerScore > humanScore) {
+        console.log(`YOU WIN ${humanScore} TO ${computerScore}!!!! YAYYYY!!`);
+        console.log("Refresh to restart game.:)");
+    } else if (computerScore == 5) {
+        console.log("👾WHO DA WINNER???👾");
         console.log("Human:", humanScore);
         console.log("Computer:", computerScore); 
-        console.log(`COMPUTER WINS ${computerScore} TO ${humanScore}....`);
-    } else {
-        console.log("Human:", humanScore);
-        console.log("Computer:", computerScore); 
-        console.log("FUNKY TIE!! WANNA REMATCH??"); 
+        console.log(`COMPUTER WINS ${computerScore} TO ${humanScore}.... YOU LOSE!!`);
+        console.log("Refresh to restart game.:)");
     }
 }
 
-//H: rock C:scissors has bug, it skips and doesn't log anything
 function playRound() {
-        
-    humanChoiceBtns.addEventListener('click', getHumanChoice);
-    computerChoice = getComputerChoice(); 
+    let computerChoice = getComputerChoice(); 
 
     if (humanChoice == computerChoice) {
         console.log("It's a tie");
-    } else if (humanChoice == "rock" && computerChoice == "scisssors") {
+        return; 
+    }
+
+    if (humanChoice == "rock" && computerChoice == "scissors") {
+        humanScore++;
         console.log("Rock beats Scissors");
-        return humanScore++;
+
     } else if (humanChoice == "scissors" && computerChoice == "paper") {
+        humanScore++;
         console.log("Scissors beat Paper");
-        return humanScore++;
+        
     } else if (humanChoice == "paper" && computerChoice == "rock") {
+        humanScore++;
         console.log("Paper beats Rock");
-        return humanScore++; 
+         
     } else if (humanChoice == "scissors" && computerChoice == "rock") {
+        computerScore++;
         console.log("Rock beats Scissors");
-        return computerScore++;
+        
     } else if (humanChoice == "paper" && computerChoice == "scissors") {
+        computerScore++;
         console.log("Scissors beat Paper");
-        return computerScore++;
     } else if (humanChoice == "rock" && computerChoice == "paper") {
+        computerScore++;
         console.log("Paper beats Rock");
-        return computerScore++;
+        
     }
 }
-
-function getHumanChoice() {
-    let humanChoice = humanChoiceBtns.textContent;
-
-    if (humanChoice == "rock" || 
-        humanChoice == "paper" ||
-        humanChoice== "scissors") {
-            return humanChoice;  
-    } else {
-        console.log("You didn't choose rock, paper, or scissors");
-        return humanChoice = null;  
-    }
-} 
 
 function getComputerChoice() {
     const randomChoice = Math.floor(Math.random() * choices.length); 
     let computerChoice = choices[randomChoice]; 
-    return computerChoice;    
+    console.log("C:", computerChoice);  
+    return computerChoice; 
 }
+
+
