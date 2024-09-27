@@ -4,9 +4,11 @@
 /* alert("Press [Ctrl + SHIFT + I] to open the Console.");
 alert("Reload the page with the console open. Or press enter to proceed.");  */
 
+//[ ] DELETE THE RESULT CHILDS WHEN A NEW ROUND BEGINS 
+//[ ] ADD SOME CUTE UI FX OR FEATURES 
+
 let humanScore = 0; 
 let computerScore = 0; 
-/* let roundCounter = 0;  */
 let humanChoice = "";
 let roundCounter = 0; 
 
@@ -46,7 +48,7 @@ function playGame() {
 
 function displayResults() {
     const resultContainer = document.querySelector("#resultContainer");
-    const round = document.createElement("h2"); 
+    const round = document.createElement("h3"); 
     round.textContent = `Round ${roundCounter}`; 
     resultContainer.appendChild(round);
     const results = document.createElement("h3"); 
@@ -77,7 +79,7 @@ function displayWinner() {
 function playRound() {
     let computerChoice = getComputerChoice();
     const choices = document.createElement("h2"); 
-    choices.textContent = `You: ${humanChoice} | vs | Machine: ${computerChoice}`; 
+    choices.textContent = `You: ${humanChoice} || Machine: ${computerChoice}`; 
     resultContainer.appendChild(choices); 
 
     if (humanChoice == computerChoice) {
