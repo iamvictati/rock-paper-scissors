@@ -7,7 +7,8 @@ alert("Reload the page with the console open. Or press enter to proceed.");  */
 let humanScore = 0; 
 let computerScore = 0; 
 /* let roundCounter = 0;  */
-let humanChoice = ""; 
+let humanChoice = "";
+let roundCounter = 0; 
 
 const choices = ["rock", "paper", "scissors"]; 
 const rockBtn = document.querySelector("#rockBtn");
@@ -39,27 +40,49 @@ function playGame() {
     }
 
     playRound(); 
+    displayResults();
+    displayWinner(); 
+}
+
+function displayResults() {
+    const resultContainer = document.querySelector("#resultContainer");
+    const round = document.createElement("h2"); 
+    round.textContent = `Round ${roundCounter}`; 
+    resultContainer.appendChild(round);
+    const results = document.createElement("h3"); 
+    results.textContent = `${humanScore} - ${computerScore}`; 
+    resultContainer.appendChild(results); 
+}
+
+function displayWinner() {
+    const winnerContainer = document.querySelector("#winnerContainer");
 
     if (humanScore == 5) {
-        console.log("👾WHO DA WINNER???👾");
-        console.log("Human:", humanScore);
-        console.log("Computer:", computerScore); 
-        console.log(`YOU WIN ${humanScore} TO ${computerScore}!!!! YAYYYY!!`);
-        console.log("Refresh to restart game.:)");
+        const winnerText = document.createElement("h1");
+        winnerText.textContent = "👾WHO DA WINNER???👾"; 
+        winnerContainer.appendChild(winnerText); 
+        const humanWinner = document.createElement("h1");
+        humanWinner.textContent = `YOU WIN ${humanScore} TO ${computerScore}!!!! YAYYYY!!`; 
+        winnerContainer.appendChild(humanWinner);
     } else if (computerScore == 5) {
-        console.log("👾WHO DA WINNER???👾");
-        console.log("Human:", humanScore);
-        console.log("Computer:", computerScore); 
-        console.log(`COMPUTER WINS ${computerScore} TO ${humanScore}.... YOU LOSE!!`);
-        console.log("Refresh to restart game.:)");
+        const winnerText = document.createElement("h1");
+        winnerText.textContent = "👾WHO DA WINNER???👾"; 
+        winnerContainer.appendChild(winnerText); 
+        const computerWinner = document.createElement("h1");
+        computerWinner.textContent = `COMPUTER WINS ${computerScore} TO ${humanScore}.... YOU LOSE!!`; 
+        winnerContainer.appendChild(computerWinner);
     }
 }
 
 function playRound() {
-    let computerChoice = getComputerChoice(); 
+    let computerChoice = getComputerChoice();
+    const choices = document.createElement("h2"); 
+    choices.textContent = `You: ${humanChoice} | vs | Machine: ${computerChoice}`; 
+    resultContainer.appendChild(choices); 
 
     if (humanChoice == computerChoice) {
         console.log("It's a tie");
+        roundCounter++;
         return; 
     }
 
@@ -87,6 +110,7 @@ function playRound() {
         console.log("Paper beats Rock");
         
     }
+    roundCounter++;
 }
 
 function getComputerChoice() {
