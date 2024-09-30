@@ -16,6 +16,10 @@ const choices = ["rock", "paper", "scissors"];
 const rockBtn = document.querySelector("#rockBtn");
 const paperBtn = document.querySelector("#paperBtn"); 
 const scissorsBtn = document.querySelector("#scissorsBtn"); 
+const buttons = document.querySelector("button"); 
+const resultContainer = document.querySelector("#resultContainer");
+const winnerContainer = document.querySelector("#winnerContainer");
+const resetGame = document.querySelector("#resetGame"); 
 
 rockBtn.addEventListener("click", (evt) => {
     humanChoice = "rock"; 
@@ -35,19 +39,37 @@ scissorsBtn.addEventListener("click", (evt) => {
     playGame(); 
 });
 
+function newRound() {
+    resultContainer.innerHTML = ""; 
+    winnerContainer.innerHTML = ""; 
+}
+
+function gameReset() {
+    humanScore = 0; 
+    computerScore = 0; 
+    humanChoice = "";
+    roundCounter = 0; 
+
+    resultContainer.innerHTML = ""; 
+    winnerContainer.innerHTML = ""; 
+    resetGame.innerHTML =""; 
+}
+
 function playGame() {
 
     if (humanScore >= 5 || computerScore >= 5) {
         return;
     }
-
+    newRound();
     playRound(); 
     displayResults();
-    displayWinner(); 
+    
+    if (humanScore == 5 || computerScore == 5) { 
+        displayWinner(); 
+    } 
 }
 
 function displayResults() {
-    const resultContainer = document.querySelector("#resultContainer");
     const round = document.createElement("h3"); 
     round.textContent = `Round ${roundCounter}`; 
     resultContainer.appendChild(round);
@@ -57,7 +79,6 @@ function displayResults() {
 }
 
 function displayWinner() {
-    const winnerContainer = document.querySelector("#winnerContainer");
 
     if (humanScore == 5) {
         const winnerText = document.createElement("h1");
@@ -74,6 +95,13 @@ function displayWinner() {
         computerWinner.textContent = `COMPUTER WINS ${computerScore} TO ${humanScore}.... YOU LOSE!!`; 
         winnerContainer.appendChild(computerWinner);
     }
+
+    const resetButton = document.createElement("button"); 
+    resetButton.textContent = "RESET GAME!"; 
+    resetGame.appendChild(resetButton);
+    resetButton.addEventListener("click", (evt) => {
+        gameReset(); 
+    })
 }
 
 function playRound() {
@@ -83,34 +111,43 @@ function playRound() {
     resultContainer.appendChild(choices); 
 
     if (humanChoice == computerChoice) {
-        console.log("It's a tie");
+        const tie = document.createElement("h3");
+        tie.textContent = "It's a tie";
+        resultContainer.appendChild(tie); 
         roundCounter++;
         return; 
     }
 
     if (humanChoice == "rock" && computerChoice == "scissors") {
+        const rockScis = document.createElement("h3");
+        rockScis.textContent = "Rock beats Scissors";
+        resultContainer.appendChild(rockScis); 
         humanScore++;
-        console.log("Rock beats Scissors");
-
     } else if (humanChoice == "scissors" && computerChoice == "paper") {
+        const scisPaper = document.createElement("h3");
+        scisPaper.textContent = "Scissors beat Paper";
+        resultContainer.appendChild(scisPaper);
         humanScore++;
-        console.log("Scissors beat Paper");
-        
     } else if (humanChoice == "paper" && computerChoice == "rock") {
+        const papRock = document.createElement("h3");
+        papRock.textContent = "Paper beats Rock";
+        resultContainer.appendChild(papRock);
         humanScore++;
-        console.log("Paper beats Rock");
-         
     } else if (humanChoice == "scissors" && computerChoice == "rock") {
+        const rockScis = document.createElement("h3");
+        rockScis.textContent = "Rock beats Scissors";
+        resultContainer.appendChild(rockScis); 
         computerScore++;
-        console.log("Rock beats Scissors");
-        
     } else if (humanChoice == "paper" && computerChoice == "scissors") {
+        const scisPaper = document.createElement("h3");
+        scisPaper.textContent = "Scissors beat Paper";
+        resultContainer.appendChild(scisPaper);
         computerScore++;
-        console.log("Scissors beat Paper");
     } else if (humanChoice == "rock" && computerChoice == "paper") {
+        const papRock = document.createElement("h3");
+        papRock.textContent = "Paper beats Rock";
+        resultContainer.appendChild(papRock);
         computerScore++;
-        console.log("Paper beats Rock");
-        
     }
     roundCounter++;
 }
