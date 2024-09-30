@@ -1,12 +1,6 @@
 //MAKE SURE TO ALWAYS STATE let WHEN USING A LOOP 
 //CALL FUNCTIONS WITHIN LOOP INSTEAD OF FUNCTION ASSIGNED VARIABLES. OTHERWISE ONLY VALUE WILL BE RETURNED.
 
-/* alert("Press [Ctrl + SHIFT + I] to open the Console.");
-alert("Reload the page with the console open. Or press enter to proceed.");  */
-
-//[💜] DELETE THE RESULT CHILDS WHEN A NEW ROUND BEGINS 
-//[ ] ADD SOME CUTE UI FX OR FEATURES 
-
 let humanScore = 0; 
 let computerScore = 0; 
 let humanChoice = "";
@@ -152,8 +146,7 @@ function playRound() {
 
 function getComputerChoice() {
     const randomChoice = Math.floor(Math.random() * choices.length); 
-    let computerChoice = choices[randomChoice]; 
-    console.log("C:", computerChoice);  
+    let computerChoice = choices[randomChoice];  
     return computerChoice; 
 }
 
