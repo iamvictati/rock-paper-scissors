@@ -7,7 +7,8 @@ html {
 body {
     margin: 10;
     padding: 20;
-    border: 1px solid white; 
+    border: 2px solid white; 
+    border-radius: 5%;
     display: flex; 
     flex-direction: column; 
     justify-content: center;
@@ -20,6 +21,9 @@ body {
     border: 2px solid white; 
     display: flex; 
     flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     margin: 15px;
     padding: 20px;
     display: flex; 
@@ -27,8 +31,24 @@ body {
 }
 
 .buttonContainer {
+    /* border: 2px solid white;  */
+    display: flex;
+    flex: 2 0 1;
+    min-width: 400px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+    color: white; 
+
+}
+
+.winnerContainer {
+    border: 2px solid white; 
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    text-align: center;
     background-color: black;
     color: white; 
 }
@@ -37,9 +57,14 @@ button {
     border: 3px solid white; 
     background-color: black;
     color: white; 
+    font-weight: bold;
+    font-family:'Courier New', Courier, monospace;
+    font-size: large;
+    text-wrap: wrap; 
     border-radius: 10%;
     padding: 10px; 
     margin: 15px;
+    cursor: pointer; 
 }
 
 
