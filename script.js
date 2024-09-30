@@ -23,19 +23,16 @@ const resetGame = document.querySelector("#resetGame");
 
 rockBtn.addEventListener("click", (evt) => {
     humanChoice = "rock"; 
-    console.log("H:", humanChoice); 
     playGame(); 
 }); 
 
 paperBtn.addEventListener("click", (evt) => {
     humanChoice = "paper"; 
-    console.log("H:", humanChoice); 
     playGame(); 
 });
 
 scissorsBtn.addEventListener("click", (evt) => {
     humanChoice = "scissors"; 
-    console.log("H:", humanChoice); 
     playGame(); 
 });
 
@@ -70,9 +67,6 @@ function playGame() {
 }
 
 function displayResults() {
-    // const round = document.createElement("h3"); 
-    // round.textContent = `Round ${roundCounter}`; 
-    // resultContainer.appendChild(round);
     const results = document.createElement("h3"); 
     results.textContent = `${humanScore} - ${computerScore}`; 
     resultContainer.appendChild(results); 
