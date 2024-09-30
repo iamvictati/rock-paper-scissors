@@ -4,13 +4,13 @@
 /* alert("Press [Ctrl + SHIFT + I] to open the Console.");
 alert("Reload the page with the console open. Or press enter to proceed.");  */
 
-//[ ] DELETE THE RESULT CHILDS WHEN A NEW ROUND BEGINS 
+//[💜] DELETE THE RESULT CHILDS WHEN A NEW ROUND BEGINS 
 //[ ] ADD SOME CUTE UI FX OR FEATURES 
 
 let humanScore = 0; 
 let computerScore = 0; 
 let humanChoice = "";
-let roundCounter = 0; 
+let roundCounter = 1; 
 
 const choices = ["rock", "paper", "scissors"]; 
 const rockBtn = document.querySelector("#rockBtn");
@@ -41,14 +41,14 @@ scissorsBtn.addEventListener("click", (evt) => {
 
 function newRound() {
     resultContainer.innerHTML = ""; 
-    winnerContainer.innerHTML = ""; 
+    winnerContainer.innerHTML = "";  
 }
 
 function gameReset() {
     humanScore = 0; 
     computerScore = 0; 
     humanChoice = "";
-    roundCounter = 0; 
+    roundCounter = 1; 
 
     resultContainer.innerHTML = ""; 
     winnerContainer.innerHTML = ""; 
@@ -70,9 +70,9 @@ function playGame() {
 }
 
 function displayResults() {
-    const round = document.createElement("h3"); 
-    round.textContent = `Round ${roundCounter}`; 
-    resultContainer.appendChild(round);
+    // const round = document.createElement("h3"); 
+    // round.textContent = `Round ${roundCounter}`; 
+    // resultContainer.appendChild(round);
     const results = document.createElement("h3"); 
     results.textContent = `${humanScore} - ${computerScore}`; 
     resultContainer.appendChild(results); 
@@ -81,18 +81,18 @@ function displayResults() {
 function displayWinner() {
 
     if (humanScore == 5) {
-        const winnerText = document.createElement("h1");
-        winnerText.textContent = "👾WHO DA WINNER???👾"; 
+        const winnerText = document.createElement("h2");
+        winnerText.textContent = "👾WHO DA WINNER?👾"; 
         winnerContainer.appendChild(winnerText); 
         const humanWinner = document.createElement("h1");
-        humanWinner.textContent = `YOU WIN ${humanScore} TO ${computerScore}!!!! YAYYYY!!`; 
+        humanWinner.textContent = `YOU WIN ${humanScore} TO ${computerScore}!! YAY!!`; 
         winnerContainer.appendChild(humanWinner);
     } else if (computerScore == 5) {
-        const winnerText = document.createElement("h1");
-        winnerText.textContent = "👾WHO DA WINNER???👾"; 
+        const winnerText = document.createElement("h2");
+        winnerText.textContent = "👾WHO DA WINNER?👾"; 
         winnerContainer.appendChild(winnerText); 
         const computerWinner = document.createElement("h1");
-        computerWinner.textContent = `COMPUTER WINS ${computerScore} TO ${humanScore}.... YOU LOSE!!`; 
+        computerWinner.textContent = `COMPUTER WINS ${computerScore} TO ${humanScore}... YOU LOSE!!`; 
         winnerContainer.appendChild(computerWinner);
     }
 
@@ -106,7 +106,11 @@ function displayWinner() {
 
 function playRound() {
     let computerChoice = getComputerChoice();
-    const choices = document.createElement("h2"); 
+
+    const round = document.createElement("h2"); 
+    round.textContent = `Round ${roundCounter}`; 
+    resultContainer.appendChild(round);
+    const choices = document.createElement("h3"); 
     choices.textContent = `You: ${humanChoice} || Machine: ${computerChoice}`; 
     resultContainer.appendChild(choices); 
 
